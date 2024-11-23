@@ -1,4 +1,4 @@
-from integrations.api_handler import APIHandler
+from application.api_handler import APIHandler
 from decouple import config
 
 class ChatGPTService:

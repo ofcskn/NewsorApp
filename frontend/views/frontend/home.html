@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Frontend Home</title>
-  </head>
-  <body>
-    <h1>Welcome to the AI Project!</h1>
-  </body>
-</html>
+{% extends 'frontend/base.html' %} {% block content %}
+<div id="chat-container">
+  <!-- Message List -->
+  {% include 'frontend/components/messages.html' %}
+  <!-- Chat Area -->
+  {% include 'frontend/components/chat_area.html' %}
+</div>
+{% endblock %}

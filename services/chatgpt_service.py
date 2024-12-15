@@ -1,6 +1,10 @@
 from application.api_handler import APIHandler
 from decouple import config
+from openai import OpenAI
 
+# implement openai
+client = OpenAI(api_key=config('OPENAI_API_KEY'), organization=config('OPENAI_ORG_ID'), project=config('OPENAI_PROJECT_ID'))
+print(client)
 class ChatGPTService:
     """
     Application layer for interacting with OpenAI's ChatGPT API.
@@ -8,14 +12,6 @@ class ChatGPTService:
     Attributes:
         api_handler (APIHandler): Handles external API requests.
     """
-
-    def __init__(self):
-        """
-        Initialize the ChatGPTService with OpenAI's API base URL.
-        """
-        base_url = "https://api.openai.com/v1"
-        self.api_handler = APIHandler(base_url)
-        self.api_key = config('OPENAI_API_KEY')
 
     def get_chat_response(self, messages):
         """
@@ -30,6 +26,10 @@ class ChatGPTService:
         Raises:
             RuntimeError: If the API call fails.
         """
-        headers = {"Authorization": f"Bearer {self.api_key}"}
-        data = {"model": "gpt-4", "messages": messages}
-        return self.api_handler.post("chat/completions", data=data, headers=headers)
+        print(messages)
+        completion = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=messages
+        )
+        print(completion.choices[0].message)
+        return completion

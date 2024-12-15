@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatForm.reset();
 
     try {
-      const response = await fetch("/chat/", {
+      const response = await fetch("/api/send_message", {
         method: "POST",
         body: formData,
       });

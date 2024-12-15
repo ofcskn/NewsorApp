@@ -1,4 +1,6 @@
 <form id="chat-form">
+  {% csrf_token %}
+  <!-- Include CSRF token -->
   {{ form }}
   <button type="submit" class="send-button">Send</button>
 </form>

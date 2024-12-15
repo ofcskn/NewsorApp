@@ -1,0 +1,4 @@
+django
+pymongo
+python-decouple
+openai

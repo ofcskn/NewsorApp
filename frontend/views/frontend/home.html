@@ -1,0 +1,8 @@
+{% extends 'frontend/base.html' %} {% block content %}
+<div id="chat-container">
+  <!-- Message List -->
+  {% include 'frontend/components/messages.html' %}
+  <!-- Chat Area -->
+  {% include 'frontend/components/chat_area.html' %}
+</div>
+{% endblock %}
